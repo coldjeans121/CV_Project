@@ -29,10 +29,7 @@ def cv_project1_alg(num=None):
         c0, c1 = request.args.get('c0'), request.args.get('c1')
         c0 = '6' if c0 == '' else c0
         c1 = '9' if c1 == '' else c1
-        print("Test", char_input, temp, c0, c1)
         char_result = letter2img(char_input, temp, c0, c1)
-        print(char_result)
-        # char_result = char_result.replace("\n", "<br>")
         return render_template('Img2txt.html', num=temp, char_result=char_result.split("\n"))
 
 

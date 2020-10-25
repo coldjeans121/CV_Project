@@ -38,7 +38,6 @@ def _letter2img(str_input="나랑", height=15):
     draw.text((0, 0), letter, font=font, fill=255)
     sketch_img = np.array(img_pil)
 
-    cv2.imshow("test1", sketch_img)
     # resize height
     sketch_img = cv2.resize(sketch_img, (30*length, height))
     # cut margin
@@ -47,12 +46,9 @@ def _letter2img(str_input="나랑", height=15):
             sketch_img = sketch_img[:, :-i+2]
             break
     # binarization
-    cv2.imshow("test2", sketch_img)
     sketch_img[sketch_img >= 50] = 255
     sketch_img[sketch_img < 50] = 0
 
-    cv2.imshow("test", sketch_img)
-    # cv2.waitKey(0)
     return sketch_img
 
 
