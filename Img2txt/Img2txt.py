@@ -3,25 +3,8 @@ import numpy as np
 from PIL import ImageFont, ImageDraw, Image
 
 
-def main(img, c0='A', c1='B'):
-    txt_dict = {255: c0, 0: c1}
-    h, w = img.shape
-    txt = ""
-    for j in range(h):
-        for i in range(w):
-            txt += txt_dict[img[j, i]]
-        txt += "\n"
-    # print(txt)
-    return txt
-
-
-def img_loader():
-    img_root = "C:\\Users\\coldj\\Pictures\\WW.png"
-    return cv2.imread(img_root)
-
-
-def letter2img(str_input="", height=15, c0='A', c1='B'):
-    return main(_letter2img(str_input, height), c0, c1)
+def letter2code(str_input="", height=15, c0='A', c1='B'):
+    return _img2code(_letter2img(str_input, height), c0, c1)
 
 
 def _letter2img(str_input="나랑", height=15):
@@ -52,7 +35,24 @@ def _letter2img(str_input="나랑", height=15):
     return sketch_img
 
 
+def _img2code(img, c0='A', c1='B'):
+    txt_dict = {255: c0, 0: c1}
+    h, w = img.shape
+    txt = ""
+    for j in range(h):
+        for i in range(w):
+            txt += txt_dict[img[j, i]]
+        txt += "\n"
+    # print(txt)
+    return txt
+
+
+def img_loader():
+    img_root = "C:\\Users\\coldj\\Pictures\\WW.png"
+    return cv2.imread(img_root)
+
+
 if __name__ == '__main__':
     image = _letter2img()
-    main(image)
+    _img2code(image)
 

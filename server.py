@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for
-from Img2txt.Img2txt import letter2img
+from Img2txt.Img2txt import letter2code
 
 app = Flask(__name__)
 
@@ -29,9 +29,9 @@ def cv_project1_alg(num=None):
         c0, c1 = request.args.get('c0'), request.args.get('c1')
         c0 = '6' if c0 == '' else c0
         c1 = '9' if c1 == '' else c1
-        char_result = letter2img(char_input, temp, c0, c1)
+        char_result = letter2code(char_input, temp, c0, c1)
         return render_template('Img2txt.html', num=temp, char_result=char_result.split("\n"))
 
 
 if __name__ == '__main__':
-    app.run(debug=True, threaded=True)
+    app.run(host='0.0.0.0', port=5050)
